@@ -19,13 +19,14 @@ public class Test_13 {
 			 * int _returnValue = i; // 0;
 			 * return _returnValue;
 			 */
-			return i;
+			return i ;
 		}finally{
 			i = 10;
 		}
 	}
 	
 	void m(){
+
 		System.out.println(Thread.currentThread().getName() + " start");
 		synchronized (o) {
 			while(true){
@@ -58,7 +59,7 @@ public class Test_13 {
 				t.m();
 			}
 		}, "thread2");
-		t.o = new Object();
+		t.o = new Object();//变更锁对象，此时t1和t2锁的不同的对象
 		thread2.start();
 		
 		System.out.println(t.i);

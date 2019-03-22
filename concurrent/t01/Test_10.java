@@ -12,7 +12,7 @@ import java.util.List;
 public class Test_10 {
 	
 	volatile int count = 0;
-	/*synchronized*/ void m(){
+	void m(){
 		for(int i = 0; i < 10000; i++){
 			count++;
 		}
@@ -31,14 +31,12 @@ public class Test_10 {
 		}
 		for(Thread thread : threads){
 			thread.start();
-		}
-		for(Thread thread : threads){
 			try {
 				thread.join();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+
 		}
 		System.out.println(t.count);
 	}

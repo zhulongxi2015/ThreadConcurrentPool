@@ -10,11 +10,13 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public class Test_15 {
+	//定义五个门闩
 	CountDownLatch latch = new CountDownLatch(5);
-	
+
 	void m1(){
+
 		try {
-			latch.await();// 等待门闩开放。
+			latch.await();// 等待门闩开放。门闩全部开发后才执行后面的操作
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -23,7 +25,7 @@ public class Test_15 {
 	
 	void m2(){
 		for(int i = 0; i < 10; i++){
-			if(latch.getCount() != 0){
+			if(latch.getCount() != 0){//门闩剩余未开发的数量
 				System.out.println("latch count : " + latch.getCount());
 				latch.countDown(); // 减门闩上的锁。
 			}
